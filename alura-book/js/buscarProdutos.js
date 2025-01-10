@@ -1,31 +1,67 @@
-import { conectaApi } from "./conectaApi.js";
-import constroiCard from "./mostrarProdutos.js";
+import { editarProduto, excluirProduto, carregarProdutos as carregarProdutosDoMostrar } from './mostrarProdutos.js';
 
-async function buscarProduto(evento) {
-    evento.preventDefault();
+document.addEventListener("DOMContentLoaded", () => {
+    carregarProdutosDoMostrar();
+    configurarBotoes();
+});
 
-    const dadosDePesquisa = document.querySelector("[data-pesquisa]").value;
-    const busca = await conectaApi.buscaProduto(dadosDePesquisa);
+// Configura o modal para edição dos produtos
+function configurarModalEditar(produtoId, tituloAtual, valorAtual, urlAtual) {
+    const modal = document.getElementById("modal-edicao");
+    const inputTitulo = document.querySelector("[data-modal-titulo]");
+    const inputValor = document.querySelector("[data-modal-valor]");
+    const inputUrl = document.querySelector("[data-modal-url]");
+    const botaoSalvar = modal.querySelector(".botao-salvar");
+    const botaoCancelar = modal.querySelector(".botao-cancelar");
 
-    const lista = document.querySelector("[data-lista]");
+    // Preenche os campos do modal com os valores atuais
+    inputTitulo.value = tituloAtual;
+    inputValor.value = valorAtual;
+    inputUrl.value = urlAtual;
 
-    // Remove todos os filhos existentes na lista
-    while (lista.firstChild) {
-        lista.removeChild(lista.firstChild);
-    }
+    // Exibe o modal
+    modal.style.display = "block";
 
-    // Adiciona os produtos encontrados
-    busca.forEach(elemento =>
-        lista.appendChild(constroiCard(elemento.url, elemento.titulo, elemento.valor))
-    );
+    // Configura o botão "Salvar" para editar o produto
+    botaoSalvar.onclick = () => {
+        const novoTitulo = inputTitulo.value.trim();
+        const novoValor = inputValor.value.trim();
+        const novaUrl = inputUrl.value.trim();
 
-    // Mensagem caso não haja resultados
-    if (busca.length === 0) {
-        lista.innerHTML = `<h2 class="mensagem_titulo">Não existe produto com este termo</h2>`;
-    }
+        if (novoTitulo && novoValor && novaUrl) {
+            editarProduto(produtoId, novoTitulo, novoValor, novaUrl);
+            modal.style.display = "none"; // Fecha o modal após salvar
+        } else {
+            alert("Todos os campos são obrigatórios!");
+        }
+    };
+
+    // Configura o botão "Cancelar" para fechar o modal sem salvar
+    botaoCancelar.onclick = () => {
+        modal.style.display = "none";
+    };
 }
 
-// Adiciona evento ao botão de pesquisa
-const botaoDePesquisa = document.querySelector("[data-botao-pesquisa]");
+// Configura os botões de editar e excluir
+function configurarBotoes() {
+    document.addEventListener("click", (event) => {
+        const botao = event.target;
 
-botaoDePesquisa.addEventListener("click", evento => buscarProduto(evento));
+        if (botao.classList.contains("editar-btn")) {
+            const produtoId = botao.dataset.id;
+            const card = botao.closest(".produto__card");
+            const tituloAtual = card.querySelector("h3").innerText;
+            const valorAtual = card.querySelector("p").innerText.replace("R$ ", "");
+            const urlAtual = card.querySelector("iframe").src;
+
+            configurarModalEditar(produtoId, tituloAtual, valorAtual, urlAtual);
+        }
+
+        if (botao.classList.contains("excluir-btn")) {
+            const produtoId = botao.dataset.id;
+            if (confirm("Tem certeza que deseja excluir este produto?")) {
+                excluirProduto(produtoId);
+            }
+        }
+    });
+}

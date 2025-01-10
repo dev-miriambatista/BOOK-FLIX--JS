@@ -1,51 +1,83 @@
-// Objeto para gerenciar as chamadas à API
-export const conectaApi = {
-    // Função para listar os produtos
-    async listaProdutos() {
+// Função para listar os produtos
+async function listaProdutos() {
+    try {
         const resposta = await fetch("http://localhost:3000/Produtos");
         if (!resposta.ok) {
-            throw new Error("Erro ao carregar a lista de produtos.");
+            throw new Error("Erro ao listar produtos");
         }
         return await resposta.json();
-    },
-
-    // Função para criar um novo produto
-    async criaProduto(titulo, valor, url) {
-        try {
-            const resposta = await fetch("http://localhost:3000/Produtos", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    url: url,
-                    titulo: titulo,
-                    valor: valor
-                })
-            });
-
-            if (!resposta.ok) {
-                throw new Error("Erro ao criar produto");
-            }
-
-            return await resposta.json();
-        } catch (erro) {
-            console.error("Erro na criação de produto:", erro.message);
-            throw erro; // Repassa o erro para ser tratado onde a função for chamada
-        }
-    },
-
-    // Função para buscar produtos por termo de busca
-    async buscaProduto(termoDeBusca) {
-        try {
-            const resposta = await fetch(`http://localhost:3000/Produtos?q=${encodeURIComponent(termoDeBusca)}`);
-            if (!resposta.ok) {
-                throw new Error("Erro ao buscar produto");
-            }
-            return await resposta.json();
-        } catch (erro) {
-            console.error("Erro na busca de produto:", erro.message);
-            return [];
-        }
+    } catch (erro) {
+        console.error("Erro na listagem de produtos:", erro.message);
+        return [];
     }
+}
+
+// Função para criar um novo produto
+async function criaProduto(titulo, valor, url) {
+    try {
+        const resposta = await fetch("http://localhost:3000/Produtos", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ url, titulo, valor })
+        });
+
+        if (!resposta.ok) {
+            throw new Error("Erro ao criar produto");
+        }
+
+        return await resposta.json();
+    } catch (erro) {
+        console.error("Erro na criação de produto:", erro.message);
+        throw erro;
+    }
+}
+
+// Função para excluir um produto
+async function excluiProduto(id) {
+    try {
+        const resposta = await fetch(`http://localhost:3000/Produtos/${id}`, {
+            method: "DELETE"
+        });
+
+        if (!resposta.ok) {
+            throw new Error("Erro ao excluir produto");
+        }
+
+        console.log(`Produto com ID ${id} excluído com sucesso.`);
+    } catch (erro) {
+        console.error("Erro ao excluir produto:", erro.message);
+        throw erro;
+    }
+}
+
+// Função para editar um produto
+async function editaProduto(id, titulo, valor, url) {
+    try {
+        const resposta = await fetch(`http://localhost:3000/Produtos/${id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ titulo, valor, url })
+        });
+
+        if (!resposta.ok) {
+            throw new Error("Erro ao editar produto");
+        }
+
+        return await resposta.json();
+    } catch (erro) {
+        console.error("Erro ao editar produto:", erro.message);
+        throw erro;
+    }
+}
+
+// Exportando as funções como um objeto
+export const conectaApi = {
+    listaProdutos,
+    criaProduto,
+    excluiProduto,
+    editaProduto
 };

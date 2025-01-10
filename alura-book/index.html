@@ -51,14 +51,23 @@
             </form>
         </section>
 
-        <!-- Lista de Produtos -->  <h2 class="formulario__titulo">Livros disponíveis !</h2>
+        <!-- Lista de Produtos -->
+        <h2 class="formulario__titulo">Livros disponíveis!</h2>
         <section class="lista-produtos">
-          
             <ul class="produtos__container" data-lista>
                 <!-- Produtos serão carregados aqui pelo JavaScript -->
             </ul>
         </section>
     </main>
+
+    <!-- Modal de Edição -->
+    <div id="modal-edicao" style="display: none;">
+        <input type="text" data-modal-titulo placeholder="Título do Produto">
+        <input type="number" data-modal-valor placeholder="Valor do Produto">
+        <input type="text" data-modal-url placeholder="URL da Imagem">
+        <button class="botao-salvar">Salvar</button>
+        <button class="botao-cancelar">Cancelar</button>
+    </div>
 
     <script src="./js/criarProduto.js" type="module"></script>
     <script src="./js/mostrarProdutos.js" type="module"></script>
@@ -66,6 +75,3 @@
 </body>
 
 </html>
-
-
-
