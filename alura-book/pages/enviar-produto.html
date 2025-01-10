@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/estilos.css">
+    <link rel="stylesheet" href="../css/estilos-form.css">
+    <link rel="stylesheet" href="../css/flexbox.css">
+    <title>AluraPlay</title>
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+
+    <!-- Cabeçalho -->
+    <header>
+        <nav class="cabecalho">
+            <a class="logo" href="../index.html"></a>
+
+            <div class="cabecalho__icones">
+                <a href="./enviar-produto.html" class="cabecalho__produtos"></a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Formulário para Cadastro de Produto -->
+    <main class="container">
+        <form class="container__formulario" data-formulario>
+            <h2 class="formulario__titulo">Envie um produto!</h2>
+
+            <div class="formulario__campo">
+                <label class="campo__etiqueta" for="url">Link embed</label>
+                <input name="url" class="campo__escrita" required placeholder="######" id="url" data-url />
+            </div>
+
+            <div class="formulario__campo">
+                <label class="campo__etiqueta" for="titulo">Título do produto</label>
+                <input name="titulo" class="campo__escrita" required placeholder="Dê o nome do produto" id="titulo" data-titulo />
+            </div>
+
+            <div class="formulario__campo">
+                <label class="campo__etiqueta" for="valor">Valor do produto</label>
+                <input name="valor" class="campo__escrita" required placeholder="Preço do produto" id="valor" data-valor />
+            </div>
+
+            <input class="formulario__botao" type="submit" value="Cadastrar Produto" />
+        </form>
+
+        <!-- Lista de Produtos -->
+        <ul class="produtos__container" alt="produtos alura" data-lista></ul>
+    </main>
+
+    <!-- Scripts -->
+    <script src="../js/criarProduto.js" type="module"></script>
+    <script src="../js/mostrarProdutos.js" type="module"></script>
+    <script src="../js/buscarProdutos.js" type="module"></script>
+
+</body>
+
+</html>
