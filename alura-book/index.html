@@ -20,6 +20,9 @@
     <header>
         <nav class="cabecalho">
             <a class="logo" href="./index.html"></a>
+
+<input type="search" placeholder="Pesquisar" id="pesquisar" class="pesquisar__input" data-pesquisa="">
+
             <div class="cabecalho__icones">
                 <a href="./enviar-produto.html" class="cabecalho__videos"></a>
             </div>
@@ -61,13 +64,13 @@
     </main>
 
     <!-- Modal de Edição -->
-    <div id="modal-edicao" style="display: none;">
-        <input type="text" data-modal-titulo placeholder="Título do Produto">
-        <input type="number" data-modal-valor placeholder="Valor do Produto">
-        <input type="text" data-modal-url placeholder="URL da Imagem">
-        <button class="botao-salvar">Salvar</button>
-        <button class="botao-cancelar">Cancelar</button>
-    </div>
+  <div id="modal-edicao" style="display: none;">
+    <input type="text" data-modal-titulo placeholder="Título do Produto">
+    <input type="number" data-modal-valor placeholder="Valor do Produto">
+    <input type="text" data-modal-url placeholder="URL da Imagem">
+    <button class="botao-salvar">Salvar</button>
+    <button class="botao-cancelar">Cancelar</button>
+</div>
 
     <script src="./js/criarProduto.js" type="module"></script>
     <script src="./js/mostrarProdutos.js" type="module"></script>

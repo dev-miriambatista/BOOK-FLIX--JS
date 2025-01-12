@@ -1,5 +1,6 @@
 import { editarProduto, excluirProduto, carregarProdutos as carregarProdutosDoMostrar } from './mostrarProdutos.js';
 
+
 document.addEventListener("DOMContentLoaded", () => {
     carregarProdutosDoMostrar();
     configurarBotoes();

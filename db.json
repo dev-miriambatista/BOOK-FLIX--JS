@@ -1,22 +1,3 @@
 {
-  "Produtos": [
-    {
-      "url": "https://m.media-amazon.com/images/I/81NQ5Ab53fL._SL1500_.jpg",
-      "titulo": "Produto 1",
-      "valor": "15",
-      "id": 5
-    },
-    {
-      "url": "https://m.media-amazon.com/images/I/610gm1IOhHL._SY425_.jpg",
-      "titulo": "Produto 10",
-      "valor": "52",
-      "id": 6
-    },
-    {
-      "url": "https://m.media-amazon.com/images/I/610gm1IOhHL._SY425_.jpg",
-      "titulo": "Produto 10",
-      "valor": "1000000",
-      "id": 7
-    }
-  ]
+  "Produtos": []
 }
