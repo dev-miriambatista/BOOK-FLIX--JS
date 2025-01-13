@@ -1,6 +1,8 @@
 .container {
     display: flex;
     height: 100vh;
+    background-color: #bb79df;
+    color: black;
 }
 
 .container__formulario {
@@ -11,6 +13,7 @@
     align-items: center;
     justify-content: center;
     text-align: initial;
+    color: black;
 }
 
 .formulario__campo {
@@ -22,6 +25,7 @@
     color: var(--azul-medio);
     font-weight: bold;
     font-size: 21px;
+    color: black;
 }
 
 .campo__escrita {

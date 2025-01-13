@@ -1,83 +1,41 @@
-// Função para listar os produtos
+// conectaApi.js
+const API_URL = "http://localhost:3000/Produtos";
+
+// Função para listar produtos
 async function listaProdutos() {
-    try {
-        const resposta = await fetch("http://localhost:3000/Produtos");
-        if (!resposta.ok) {
-            throw new Error("Erro ao listar produtos");
-        }
-        return await resposta.json();
-    } catch (erro) {
-        console.error("Erro na listagem de produtos:", erro.message);
-        return [];
-    }
+    const response = await fetch(API_URL);
+    if (!response.ok) throw new Error("Erro ao listar produtos");
+    return await response.json();
 }
 
-// Função para criar um novo produto
+// Função para criar um produto
 async function criaProduto(titulo, valor, url) {
-    try {
-        const resposta = await fetch("http://localhost:3000/Produtos", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ url, titulo, valor })
-        });
-
-        if (!resposta.ok) {
-            throw new Error("Erro ao criar produto");
-        }
-
-        return await resposta.json();
-    } catch (erro) {
-        console.error("Erro na criação de produto:", erro.message);
-        throw erro;
-    }
-}
-
-// Função para excluir um produto
-async function excluiProduto(id) {
-    try {
-        const resposta = await fetch(`http://localhost:3000/Produtos/${id}`, {
-            method: "DELETE"
-        });
-
-        if (!resposta.ok) {
-            throw new Error("Erro ao excluir produto");
-        }
-
-        console.log(`Produto com ID ${id} excluído com sucesso.`);
-    } catch (erro) {
-        console.error("Erro ao excluir produto:", erro.message);
-        throw erro;
-    }
+    const response = await fetch(API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ titulo, valor, url }),
+    });
+    if (!response.ok) throw new Error("Erro ao criar produto");
+    return await response.json();
 }
 
 // Função para editar um produto
 async function editaProduto(id, titulo, valor, url) {
-    try {
-        const resposta = await fetch(`http://localhost:3000/Produtos/${id}`, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ titulo, valor, url })
-        });
-
-        if (!resposta.ok) {
-            throw new Error("Erro ao editar produto");
-        }
-
-        return await resposta.json();
-    } catch (erro) {
-        console.error("Erro ao editar produto:", erro.message);
-        throw erro;
-    }
+    const response = await fetch(`${API_URL}/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ titulo, valor, url }),
+    });
+    if (!response.ok) throw new Error("Erro ao editar produto");
+    return await response.json();
 }
 
-// Exportando as funções como um objeto
-export const conectaApi = {
-    listaProdutos,
-    criaProduto,
-    excluiProduto,
-    editaProduto
-};
+// Função para excluir um produto
+async function excluiProduto(id) {
+    const response = await fetch(`${API_URL}/${id}`, { method: "DELETE" });
+    if (!response.ok) throw new Error("Erro ao excluir produto");
+    return;
+}
+
+// Exporta as funções
+export const conectaApi = { listaProdutos, criaProduto, editaProduto, excluiProduto };

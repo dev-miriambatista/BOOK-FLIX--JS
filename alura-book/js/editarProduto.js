@@ -3,8 +3,9 @@ import { conectaApi } from './conectaApi.js';
 document.addEventListener('DOMContentLoaded', () => {
     const listaProdutos = document.querySelector('[data-lista]');
 
-    // Evento para delegar a edição
+    // Evento para delegar ações de edição e exclusão
     listaProdutos.addEventListener('click', async (event) => {
+        // Função de Edição
         if (event.target.classList.contains('botao-editar')) {
             const id = event.target.getAttribute('data-id');
             const produtoCard = event.target.closest('.produto__card');
@@ -33,6 +34,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             } else {
                 alert('Todos os campos devem ser preenchidos.');
+            }
+        }
+
+        // Função de Exclusão
+        if (event.target.classList.contains('botao-excluir')) {
+            const id = event.target.getAttribute('data-id');
+
+            if (confirm('Deseja realmente excluir este produto?')) {
+                try {
+                    await conectaApi.excluiProduto(id);
+                    event.target.closest('.produto__card').remove(); // Remove o card do DOM
+                    alert('Produto excluído com sucesso!');
+                } catch (error) {
+                    console.error('Erro ao excluir o produto:', error);
+                    alert('Não foi possível excluir o produto.');
+                }
             }
         }
     });

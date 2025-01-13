@@ -3,6 +3,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: #5ce1e6d3;
 }
 
 .produtos__container {
@@ -13,11 +14,11 @@
     padding: 153px 20px 10px 20px;
 }
 
-.item__produto {
-   
+.item_produto {
     flex-grow: 1;
     height: 303px;
-    width: 300px;
+    width: 150px;
+    justify-content: last baseline;
 }
 
 /* grid vídeos */
