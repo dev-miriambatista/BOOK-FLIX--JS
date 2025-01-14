@@ -1,8 +1,8 @@
 .container {
     display: flex;
-    height: 100vh;
-    background-color: #bb79df;
-    color: black;
+    width: 100vw;
+    background-color: #6b6565;
+    color: white;
 }
 
 .container__formulario {
@@ -22,7 +22,7 @@
 }
 
 .formulario__titulo {
-    color: var(--azul-medio);
+  
     font-weight: bold;
     font-size: 21px;
     color: black;
@@ -40,12 +40,12 @@
     line-height: 1.5;
     padding: 0 0 .1em 1em;
     font-weight: 700;
-    color: var(--azul-medio);
+   
 }
 
 .formulario__botao {
     padding: 1em 3em;
     margin: 2em 0;
     border-radius: 24px;
-    background-color: var(--azul-escuro);
+
 }

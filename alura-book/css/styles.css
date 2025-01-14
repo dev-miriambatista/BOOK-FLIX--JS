@@ -53,16 +53,29 @@ body {
 }
 
 
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+}
+
 
 /* Formulário */
 .formulario__container {
-    margin: 3em 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: initial;
+    position: fixed; /* Fixa o formulário no lugar */
+    top: 25vh; /* Ajusta a altura para não sobrepor o cabeçalho */
+    left: 5vw; /* Define o espaçamento da margem esquerda */
+    width: 25%; /* Tamanho fixo ou proporcional */
+    margin: 0; /* Remove margens externas */
+    padding: 1em; /* Espaçamento interno */
+    background-color: #fff; /* Fundo branco para destacar */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Adiciona um leve sombreado */
+    border-radius: 8px; /* Arredonda os cantos */
+    z-index: 10;
 }
+
 
 .formulario__campo {
     margin: 0.5em;
@@ -73,6 +86,7 @@ body {
     color: #000000;
     font-weight: bold;
     font-size: 21px;
+    text-align: center;
 }
 
 .campo__escrita {
@@ -80,7 +94,8 @@ body {
     display: block;
     color: black;
     padding: 1em;
-    width: 40vw;
+    width: 20vw;
+    background-color:#d4f151;
 }
 
 .campo__escrita:hover {
@@ -88,8 +103,8 @@ body {
     display: block;
     color: black;
     padding: 1em;
-    width: 40vw;
-    background-color:#d4f151;
+    width: 20vw;
+    background-color:#f5b554;
 }
 
 .campo__etiqueta {
@@ -103,29 +118,28 @@ body {
     padding: 1em 3em;
     margin: 2em 0;
     border-radius: 0;
-    background-color: #ffffff;
+    background-color:#38e686;
 }
 
 .formulario__botao:hover {
     padding: 1em 3.2em;
     margin: 2em 0;
     border-radius: 0.5em;
-    background-color: #d4f151;
+    background-color:#f5b554;
 }
 
 /* Lista de Produtos */
 
 
 .produto__lista {
+    margin-left: 33%;
+    margin-top: 8em;
+    width: 65%;
     display: flex;
-    width: 55vw;
-    gap: 0;
-    align-content: center;
-    align-items: center;
-    margin-top: 20vh;
-  
     flex-wrap: wrap;
-   
+    gap: 1rem;
+    justify-content: flex-end;
+    align-items: flex-start;
 }
 
 .produtos__item {
@@ -139,9 +153,6 @@ body {
     width: 15vw;
     height: 55vh;
 }
-
-
-
 .descricao-produto {
     margin-top: 1rem;
     display: grid;
@@ -150,7 +161,6 @@ body {
     row-gap: 10px;
     grid-template-columns: auto 1fr;
     
-  
 }
 
 .descricao-produto img {
@@ -158,12 +168,13 @@ body {
     width: 2em;
     height: 2em;
     border-radius: 100%;
+    margin:0;
 }
 
 .titulo {
       grid-area: 1 / 2 / 2 / 3;
       font-weight: 700;
-      color: #444444;
+      color: #000000;
       background-color: #d4f151;
       padding: 5%;
       text-align: center;
@@ -171,8 +182,8 @@ body {
 
 p {
     grid-area: 2 / 2 / 3 / 3;
-    font: normal bolder 1.2em arial;
-    color: #000000;  
+    font: normal bolder 1em arial;
+    color: #ffffff;  
 }
 
 .botao-editar, .botao-excluir{
@@ -183,7 +194,7 @@ p {
 	padding: 5%;
 	border: none;
 	background-color:#38e686;
-    margin:2%
+
 }
 
 .botao-editar:hover, .botao-excluir:hover{
@@ -195,11 +206,17 @@ p {
 	border: none;
     border-radius: 0.5em;
     padding: 6%;
-	background-color:#d4f151;
-
-
+    background-color:#f5b554;
 }
-
+ footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:black;
+    color: white;
+    height: 5vh;
+    
+ }
 
 
 

@@ -13,10 +13,40 @@
       "id": 3
     },
     {
-      "titulo": "Devocional Mulheres",
+      "titulo": "Dev. Mulheres",
       "valor": "63.04",
       "url": "https://m.media-amazon.com/images/I/41lfzAq-UzL._SL1000_.jpg",
       "id": 4
+    },
+    {
+      "titulo": "uma garota segundo o coração de Deus",
+      "valor": "52.90",
+      "url": "https://m.media-amazon.com/images/I/61qnxgLEm+L._SL1000_.jpg",
+      "id": 7
+    },
+    {
+      "titulo": "Eu, meu pavio curto e Deus",
+      "valor": "35.67",
+      "url": "https://m.media-amazon.com/images/I/81ESKAGJpML._SL1500_.jpg",
+      "id": 8
+    },
+    {
+      "titulo": "Um dia sem reclamar",
+      "valor": "30.11",
+      "url": "https://m.media-amazon.com/images/I/619T0W3tfuL._SL1360_.jpg",
+      "id": 9
+    },
+    {
+      "titulo": "O Deus que destroi sonhos.",
+      "valor": "32.14",
+      "url": "https://m.media-amazon.com/images/I/91VxtptiBgL._SL1500_.jpg",
+      "id": 10
+    },
+    {
+      "titulo": "Hábitos Atomicos",
+      "valor": "42.63",
+      "url": "https://m.media-amazon.com/images/I/81eT2pjx4jL._SL1500_.jpg",
+      "id": 11
     }
   ]
 }
